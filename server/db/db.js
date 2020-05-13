@@ -3,11 +3,6 @@ require('dotenv').config();
 
 const config = require('../config/key.js');
 
-// const env = process.env;
-// const USER = env.MONGO_USER;
-// const PW = env.MONGO_PW;
-// const SERVER = env.MONGO_SERVER;
-
 const uri = config.mongoURI
 const options = {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex : true, useFindAndModify: false }
 

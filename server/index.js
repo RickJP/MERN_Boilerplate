@@ -26,6 +26,10 @@ app.get('/api/user/auth', auth, (req, res) => {
   })
 })
 
+app.get('/', (req, res) => {
+  console.log('I have ARRIVED!')
+})
+
 app.post('/api/users/register', (req, res) => {
   const user = new User(req.body);
 

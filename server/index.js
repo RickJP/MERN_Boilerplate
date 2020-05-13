@@ -27,7 +27,7 @@ app.get('/api/user/auth', auth, (req, res) => {
 })
 
 app.get('/', (req, res) => {
-  console.log('I have ARRIVED!')
+  return res.json({message: 'I made it!!!!'})
 })
 
 app.post('/api/users/register', (req, res) => {

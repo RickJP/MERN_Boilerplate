@@ -1,13 +1,15 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const env = process.env;
-const USER = env.MONGO_USER;
-const PW = env.MONGO_PW;
-const SERVER = env.MONGO_SERVER;
+const config = require('../config/key.js');
 
-const uri = `mongodb+srv://${USER}:${PW}@${SERVER}`
-const options = {useNewUrlParser: true, useUnifiedTopology: true }
+// const env = process.env;
+// const USER = env.MONGO_USER;
+// const PW = env.MONGO_PW;
+// const SERVER = env.MONGO_SERVER;
+
+const uri = config.mongoURI
+const options = {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex : true }
 
 mongoose.Promise = Promise
 

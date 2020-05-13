@@ -9,7 +9,7 @@ const config = require('../config/key.js');
 // const SERVER = env.MONGO_SERVER;
 
 const uri = config.mongoURI
-const options = {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex : true }
+const options = {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex : true, useFindAndModify: false }
 
 mongoose.Promise = Promise
 

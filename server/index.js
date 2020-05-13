@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const port = process.env.PORT || 5000;
 require('./db/db');
 require('dotenv').config();
 
@@ -11,8 +10,6 @@ const {User} = require('./models/user.js');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
-
-
 
 const { auth } = require('./middleware/auth');
 
@@ -58,4 +55,14 @@ app.post('/api/user/login', (req, res) => {
   });
 });
 
+app.get('/api/user/logout', auth, (req, res) => {
+  User.findOneAndUpdate({ _id: req.user._id }, { token: '' }, (err, user) => {
+    if (err) return res.json({ logoutSuccess: false, err })
+    return res.send({
+      logoutSuccess: true
+    })
+  })
+})
+
+const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
